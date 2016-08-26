@@ -38,3 +38,8 @@ set nu            " line numbering on
 
 "colo default
 syntax on
+
+
+inoremap jk <esc>
+inoremap <esc> <Nop>
+
