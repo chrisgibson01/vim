@@ -41,5 +41,3 @@ syntax on
 
 
 inoremap jk <esc>
-inoremap <esc> <Nop>
-
