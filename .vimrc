@@ -1,32 +1,4 @@
-set nocompatible
-source $VIMRUNTIME/vimrc_example.vim
-source $VIMRUNTIME/mswin.vim
-behave mswin
-
-set diffexpr=MyDiff()
-function MyDiff()
-  let opt = '-a --binary '
-  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-  let arg1 = v:fname_in
-  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-  let arg2 = v:fname_new
-  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-  let arg3 = v:fname_out
-  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-  let eq = ''
-  if $VIMRUNTIME =~ ' '
-    if &sh =~ '\<cmd'
-      let cmd = '""' . $VIMRUNTIME . '\diff"'
-      let eq = '"'
-    else
-      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-    endif
-  else
-    let cmd = $VIMRUNTIME . '\diff'
-  endif
-  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
-endfunction
+set number
 
 set shiftwidth=4  " operation >> indents 4 columns; << unindents 4 columns
 set tabstop=4     " an hard TAB displays as 4 columns
@@ -34,10 +6,45 @@ set expandtab     " insert spaces when hitting TABs
 set softtabstop=4 " insert/delete 4 spaces when hitting a TAB/BACKSPACE
 set shiftround    " round indent to multiple of 'shiftwidth'
 set autoindent    " align the new line indent with the previous line
-set nu            " line numbering on
-
-"colo default
-syntax on
-
 
 inoremap jk <esc>
+
+set autoread
+
+colorscheme desert
+syntax on
+
+set foldenable
+set foldmethod=syntax
+
+if has("autocmd")
+    filetype on
+    autocmd FileType python setlocal foldmethod=indent
+endif
+
+"set path+=/root/???/**
+
+"set tags+=./tags;,tags; " see file-searching
+"set tags+=/root/???/tags " see file-searching
+"set tags+=/root/???/tags " see file-searching
+"set tags+=./tags;???/**1,tags; " see file-searching
+
+set cscopetag
+set cscoperelative 
+"set cscope add /root/city_vision_servers_trunk 
+if has("cscope")
+    set csprg=/usr/bin/cscope
+    set csto=0
+    set cst
+	set cscopequickfix=s-,c-,d-,i-,t-,e-
+    set nocsverb
+    " add any database in current directory
+    if filereadable("cscope.out")
+        cs add cscope.out
+    " else add database pointed to by environment
+    elseif $CSCOPE_DB != ""
+        cs add $CSCOPE_DB
+    endif
+    set csverb
+endif
+
