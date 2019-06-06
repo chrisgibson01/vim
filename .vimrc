@@ -11,7 +11,7 @@ inoremap jk <esc>
 
 set autoread
 
-colorscheme desert
+colorscheme ron
 syntax on
 
 set foldenable
@@ -50,4 +50,13 @@ endif
 
 " clang-format
 map <C-K> :py3f /usr/share/clang/clang-format-6.0/clang-format.py<cr>
-imap <C-K> <c-o>:py3f <path-to-this-file>/clang-format.py<cr>
+imap <C-K> <c-o>:py3f /usr/share/clang/clang-format-6.0/clang-format.py<cr>
+
+function! Formatonsave()
+  let l:formatdiff = 1
+  py3f /usr/share/clang/clang-format-6.0/clang-format.py
+endfunction
+autocmd BufWritePre *.h,*.cc,*.cpp call Formatonsave()
+
+
+
