@@ -14,6 +14,8 @@ set autoread
 colorscheme ron
 syntax on
 
+set belloff=all
+
 set foldenable
 set foldmethod=syntax
 
@@ -58,5 +60,6 @@ function! Formatonsave()
 endfunction
 autocmd BufWritePre *.h,*.cc,*.cpp call Formatonsave()
 
-
+set path+=/root/sv/src
+set path+=/root/sdk_libraries/src
 
