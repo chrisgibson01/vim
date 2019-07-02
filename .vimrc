@@ -16,8 +16,6 @@ set autoread
 colorscheme ron
 syntax on
 
-set belloff=all
-
 set foldenable
 set foldmethod=syntax
 
