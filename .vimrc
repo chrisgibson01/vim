@@ -63,3 +63,4 @@ autocmd BufWritePre *.h,*.cc,*.cpp call Formatonsave()
 set path+=/root/sv/src
 set path+=/root/sdk_libraries/src
 
+set makeprg=make\ \-\j\4
