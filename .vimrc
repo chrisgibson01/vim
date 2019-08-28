@@ -24,7 +24,7 @@ if has("autocmd")
     autocmd FileType python setlocal foldmethod=indent
 endif
 
-"set path+=/root/???/**
+set path+=/usr/include/c++/7.4.0
 
 "set tags+=./tags;,tags; " see file-searching
 "set tags+=/root/???/tags " see file-searching
@@ -60,7 +60,7 @@ function! Formatonsave()
 endfunction
 autocmd BufWritePre *.h,*.cc,*.cpp call Formatonsave()
 
+set makeprg=make\ \-\j\4
+
 set path+=/root/sv/src
 set path+=/root/sdk_libraries/src
-
-set makeprg=make\ \-\j\4
