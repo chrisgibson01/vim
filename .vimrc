@@ -51,16 +51,17 @@ if has("cscope")
 endif
 
 " clang-format
-map <C-K> :py3f /usr/share/clang/clang-format-6.0/clang-format.py<cr>
-imap <C-K> <c-o>:py3f /usr/share/clang/clang-format-6.0/clang-format.py<cr>
+map <C-K> :py3f /usr/share/clang/clang-format-10/clang-format.py<cr>
+imap <C-K> <c-o>:py3f /usr/share/clang/clang-format-10/clang-format.py<cr>
 
 function! Formatonsave()
   let l:formatdiff = 1
-  py3f /usr/share/clang/clang-format-6.0/clang-format.py
+  py3f /usr/share/clang/clang-format-10/clang-format.py
 endfunction
 autocmd BufWritePre *.h,*.cc,*.cpp call Formatonsave()
 
-set makeprg=make\ \-\j\6\ \$\*
+"set makeprg=make\ \-\j\6\ \$\*
+set makeprg=ninja\ \-C\ \/root/build
 
 set path+=/root/sv/src
 set path+=/root/sdk_libraries/src
