@@ -17,7 +17,7 @@ colorscheme ron
 syntax on
 
 set foldenable
-set foldmethod=syntax
+set foldmethod=manual
 
 if has("autocmd")
     filetype on
@@ -60,7 +60,7 @@ function! Formatonsave()
 endfunction
 autocmd BufWritePre *.h,*.cc,*.cpp call Formatonsave()
 
-set makeprg=make\ \-\j\4
+set makeprg=make\ \-\j\6\ \$\*
 
 set path+=/root/sv/src
 set path+=/root/sdk_libraries/src
