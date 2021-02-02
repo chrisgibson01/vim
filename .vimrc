@@ -61,7 +61,7 @@ endfunction
 autocmd BufWritePre *.h,*.cc,*.cpp call Formatonsave()
 
 "set makeprg=make\ \-\j\6\ \$\*
-set makeprg=ninja\ \-C\ \/root/build
+"set makeprg=ninja\ -C\ <path to cmake dir> $*
 
 set path+=/root/sv/src
 set path+=/root/sdk_libraries/src
