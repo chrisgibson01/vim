@@ -11,8 +11,7 @@
 # hlsearch on (H) or off (h):
 ~h
 # Command Line History (newest to oldest):
-:grep -r --include='*.[ch]' --include='*.[ch]pp' target .
-|2,0,1612201304,,"grep -r --include='*.[ch]' --include='*.[ch]pp' target ."
+:grep -rE --include='*.[ch]' --include='*.[ch]pp' cjg .
 
 # Search String History (newest to oldest):
 
