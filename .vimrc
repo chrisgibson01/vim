@@ -60,8 +60,7 @@ function! Formatonsave()
 endfunction
 autocmd BufWritePre *.h,*.cc,*.cpp call Formatonsave()
 
-"set makeprg=make\ -j6\ $*
-set makeprg=ninja\ -C\ /root/sv\ $*
+"set makeprg=ninja\ -C\ <path to cmake dir> $*
 
 set path+=/root/sv/src
 set path+=/root/sdk_libraries/src
