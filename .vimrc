@@ -14,7 +14,15 @@ inoremap jk <esc>
 set autoread
 
 colorscheme ron
-syntax on
+highlight DiffAdd    cterm=bold ctermfg=white ctermbg=DarkRed
+highlight DiffDelete cterm=bold ctermfg=white ctermbg=Grey
+highlight DiffChange cterm=bold ctermfg=white ctermbg=DarkBlue
+highlight DiffText   cterm=bold ctermfg=white ctermbg=DarkGreen
+if &diff
+    syntax off 
+else
+    syntax on
+endif
 
 set foldenable
 set foldmethod=manual
