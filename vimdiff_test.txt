@@ -1,0 +1,5 @@
+Delete this line to see the deleted colour (DiffDelete)
+
+Change a WORD in this line to see the changed word colour (DiffText) and the changed line colour (DiffChange)
+
+Add an extra line to see the DiffAdd colour

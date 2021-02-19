@@ -9,13 +9,21 @@ set autoindent    " align the new line indent with the previous line
 
 set belloff=all
 
+set nobackup
+set nowritebackup
+set noswapfile
+
 inoremap jk <esc>
 
 set autoread
 
 colorscheme ron
+highlight DiffAdd    cterm=bold ctermfg=white ctermbg=DarkRed
+highlight DiffDelete cterm=bold ctermfg=white ctermbg=Grey
+highlight DiffChange cterm=bold ctermfg=white ctermbg=DarkBlue
+highlight DiffText   cterm=bold ctermfg=white ctermbg=DarkGreen
 if &diff
-    syntax off
+    syntax off 
 else
     syntax on
 endif
