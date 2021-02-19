@@ -9,6 +9,10 @@ set autoindent    " align the new line indent with the previous line
 
 set belloff=all
 
+set nobackup
+set nowritebackup
+set noswapfile
+
 inoremap jk <esc>
 
 set autoread
