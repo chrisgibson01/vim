@@ -14,7 +14,11 @@ inoremap jk <esc>
 set autoread
 
 colorscheme ron
-syntax on
+if &diff
+    syntax off
+else
+    syntax on
+endif
 
 set foldenable
 set foldmethod=manual
@@ -60,7 +64,7 @@ function! Formatonsave()
 endfunction
 autocmd BufWritePre *.h,*.cc,*.cpp call Formatonsave()
 
-"set makeprg=ninja\ -C\ <path to cmake dir> $*
+"set makeprg=ninja\ -C\ <path to cmake dir>\ $*
 
 set path+=/root/sv/src
 set path+=/root/sdk_libraries/src
