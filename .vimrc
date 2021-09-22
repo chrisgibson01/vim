@@ -5,7 +5,7 @@ set tabstop=4     " an hard TAB displays as 4 columns
 set expandtab     " insert spaces when hitting TABs
 set softtabstop=4 " insert/delete 4 spaces when hitting a TAB/BACKSPACE
 set shiftround    " round indent to multiple of 'shiftwidth'
-set autoindent    " align the new line indent with the previous line
+"set autoindent    " align the new line indent with the previous line
 
 set incsearch
 
@@ -68,20 +68,29 @@ endif
 map <C-K> :py3f /usr/share/clang/clang-format-10/clang-format.py<cr>
 imap <C-K> <c-o>:py3f /usr/share/clang/clang-format-10/clang-format.py<cr>
 
-function! Formatonsave()
-  let l:formatdiff = 1
-  py3f /usr/share/clang/clang-format-10/clang-format.py
-endfunction
-autocmd BufWritePre *.h,*.cc,*.cpp call Formatonsave()
+"function! Formatonsave()
+"  let l:formatdiff = 1
+"  py3f /usr/share/clang/clang-format-10/clang-format.py
+"endfunction
+"autocmd BufWritePre *.h,*.cc,*.cpp call Formatonsave()
 
 "set makeprg=ninja\ -C\ <path to cmake dir>\ $*
+"set makeprg=ninja\ -C\ /root/sv\ test_bitcoin\ $*
+set makeprg=ninja\ -C\ /root/sv\ test_bitcoin\ bitcoind\ bitcoin-cli\ bitcoin-miner\ $*
 
 set path+=/root/sv/src
 set path+=/root/sdk_libraries/src
 
 " ALE config
 "let g:ale_sign_column_always = 1
-let g:ale_linters = {'python': ['pyflakes'],}
+let g:ale_linters = {'cpp': ['clangtidy','clangd'],'python': ['pyflakes'],}
+let g:ale_completion_enabled = 1
+let g:ale_completion_autoimport = 1
+let g:ale_pattern_options = {
+\   '.*sv/src/validation.cpp$': {'ale_enabled': 0},
+\}
+
+set omnifunc=ale#completion#OmniFunc
 
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
@@ -93,7 +102,6 @@ packloadall
 " Load all of the helptags now, after plugins have been loaded.
 " All messages and errors will be ignored.
 silent! helptags ALL
-
 
 
 
